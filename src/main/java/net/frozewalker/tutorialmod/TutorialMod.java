@@ -1,6 +1,8 @@
 package net.frozewalker.tutorialmod;
 
 import com.mojang.logging.LogUtils;
+import net.frozewalker.tutorialmod.block.ModBlocks;
+import net.frozewalker.tutorialmod.item.ModItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -16,9 +18,11 @@ public class TutorialMod {
     public static final String MOD_ID = "tutorialmod";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    // Very Important Comment
     public TutorialMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
